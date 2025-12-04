@@ -1,186 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Web Page Example</title>
-    <style>
-        /* Basic inline CSS for better visibility */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        header, section, footer {
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        form {
-            background-color: #f9f9f9;
-            padding: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group textarea {
-            width: calc(100% - 16px);
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .image-container {
-            text-align: center;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple To‑Do App</title>
+  <style>
+    :root{--bg:#f7f9fc;--card:#ffffff;--accent:#2563eb;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, Arial; margin:0;background:var(--bg);color:#0f1724}
+    .wrap{max-width:900px;margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between}
+    h1{margin:0;font-size:20px}
+    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 20px rgba(15,23,36,0.06)}
+
+    .input-row{display:flex;gap:10px;margin-top:14px}
+    input[type="text"]{flex:1;padding:10px;border:1px solid #e6eef6;border-radius:8px;font-size:15px}
+    button{background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer}
+    button.secondary{background:transparent;border:1px solid rgba(15,23,36,0.06);color:var(--muted);font-weight:600}
+
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .filters button{background:transparent;border:1px solid #e6eef6;padding:6px 10px;border-radius:999px}
+
+    .todo-list{margin-top:14px;display:grid;gap:8px}
+    .todo{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:10px;border:1px solid rgba(15,23,36,0.04)}
+    .left{display:flex;gap:10px;align-items:center}
+    .todo input[type="checkbox"]{transform:scale(1.15)}
+    .text{font-size:15px}
+    .text.done{text-decoration:line-through;opacity:0.6}
+    .meta{font-size:12px;color:var(--muted)}
+    .actions{display:flex;gap:8px;align-items:center}
+    .icon-btn{background:transparent;border:0;padding:6px;border-radius:6px;cursor:pointer}
+
+    footer{margin-top:16px;display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+
+    @media (max-width:600px){.input-row{flex-direction:column}button{width:100%}.filters{gap:6px}}
+  </style>
 </head>
 <body>
-
+  <div class="wrap">
     <header>
-        <h1>Welcome to the Comprehensive HTML Example Page</h1>
-        <p>This page showcases various essential HTML elements used in modern web development.</p>
-        <nav>
-            <h2>Navigation Menu</h2>
-            <ul>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Our Services</a></li>
-                <li><a href="#data">Data Table</a></li>
-                <li><a href="#contact">Contact Form</a></li>
-            </ul>
-        </nav>
+      <h1>Simple To‑Do App</h1>
+      <div class="meta">Stores tasks in Local Storage</div>
     </header>
 
-    <section id="about">
-        <h2>1. About Us Section</h2>
-        <div class="image-container">
-            <img src="https://via.placeholder.com/400x150?text=Web+Development+Image" alt="Placeholder Image for Web Development" width="400" height="150">
-        </div>
-        <p>This is the first main paragraph. We focus on providing high-quality educational resources for learning web technologies like HTML, CSS, and JavaScript.</p>
-        <p>Here is a blockquote for emphasis:</p>
-        <blockquote>
-            "The best way to predict the future is to create it." - Peter Drucker
-        </blockquote>
-        <p>We believe in continuous learning and hands-on practice.</p>
+    <section class="card" aria-labelledby="app-desc">
+      <p id="app-desc" class="meta">Add tasks, mark complete, edit, delete, and filter. Works offline in your browser.</p>
+
+      <div class="input-row">
+        <input id="taskInput" type="text" placeholder="Add a new task and press Add or Enter" aria-label="Task description" />
+        <button id="addBtn">Add</button>
+        <button id="clearBtn" class="secondary">Clear All</button>
+      </div>
+
+      <div class="filters" role="tablist" aria-label="Filters">
+        <button data-filter="all" class="filter active">All</button>
+        <button data-filter="active" class="filter">Active</button>
+        <button data-filter="completed" class="filter">Completed</button>
+      </div>
+
+      <div class="todo-list" id="todoList" aria-live="polite"></div>
+
+      <footer>
+        <div id="count">0 tasks</div>
+        <div class="muted">Tip: double‑click a task to edit it.</div>
+      </footer>
     </section>
+  </div>
 
-    <section id="services">
-        <h2>2. Our Services & Lists</h2>
-        <h3>Key Offerings (Ordered List)</h3>
-        <ol>
-            <li>Front-end Development Workshops</li>
-            <li>Back-end System Architecture Consulting</li>
-            <li>Database Management Training</li>
-            <li>Full-stack Project Mentorship</li>
-        </ol>
+  <script>
+    // Simple To-Do app with Local Storage
+    const taskInput = document.getElementById('taskInput');
+    const addBtn = document.getElementById('addBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const todoList = document.getElementById('todoList');
+    const count = document.getElementById('count');
+    const filterBtns = document.querySelectorAll('.filter');
 
-        <h3>Technology Stack (Description List)</h3>
-        <dl>
-            <dt>HTML5</dt>
-            <dd>The latest standard for structuring web content.</dd>
-            <dt>CSS3</dt>
-            <dd>Used for styling the presentation of the document.</dd>
-            <dt>JavaScript</dt>
-            <dd>The programming language for dynamic web behavior.</dd>
-        </dl>
-    </section>
+    let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    let currentFilter = 'all';
 
-    <section id="data">
-        <h2>3. Sample Data Table</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Feature</th>
-                    <th>Availability</th>
-                    <th>Priority</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>User Authentication</td>
-                    <td>Available</td>
-                    <td>High</td>
-                </tr>
-                <tr>
-                    <td>Payment Gateway Integration</td>
-                    <td>In Development</td>
-                    <td>Medium</td>
-                </tr>
-                <tr>
-                    <td>Advanced Analytics</td>
-                    <td>Planned</td>
-                    <td>Low</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3">Data last updated: December 2025</td>
-                </tr>
-            </tfoot>
-        </table>
-    </section>
+    function save(){ localStorage.setItem('tasks', JSON.stringify(tasks)); }
 
-    <section id="contact">
-        <h2>4. Contact Form</h2>
-        <form action="/submit-form" method="POST">
-            <div class="form-group">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="user_name" required>
+    function render(){
+      // filter tasks
+      const shown = tasks.filter(t => {
+        if(currentFilter === 'all') return true;
+        if(currentFilter === 'active') return !t.done;
+        if(currentFilter === 'completed') return t.done;
+      });
+
+      todoList.innerHTML = '';
+      shown.forEach(task => {
+        const el = document.createElement('div');
+        el.className = 'todo';
+        el.innerHTML = `
+          <div class="left">
+            <input type="checkbox" ${task.done? 'checked':''} data-id="${task.id}" />
+            <div>
+              <div class="text ${task.done? 'done':''}" data-id="${task.id}">${escapeHtml(task.text)}</div>
+              <div class="meta">Created: ${new Date(task.created).toLocaleString()}</div>
             </div>
+          </div>
+          <div class="actions">
+            <button class="icon-btn" title="Edit" data-edit="${task.id}">✏️</button>
+            <button class="icon-btn" title="Delete" data-delete="${task.id}">🗑️</button>
+          </div>
+        `;
+        // event handlers
+        el.querySelector('input[type="checkbox"]').addEventListener('change', e => {
+          toggleDone(task.id, e.target.checked);
+        });
+        el.querySelector('[data-delete]').addEventListener('click', () => removeTask(task.id));
+        el.querySelector('[data-edit]').addEventListener('click', () => startEdit(task.id));
+        // double click to edit text
+        el.querySelector('.text').addEventListener('dblclick', () => startEdit(task.id));
 
-            <div class="form-group">
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" name="user_email" required>
-            </div>
+        todoList.appendChild(el);
+      });
 
-            <div class="form-group">
-                <label for="subject">Subject:</label>
-                <select id="subject" name="enquiry_subject">
-                    <option value="general">General Inquiry</option>
-                    <option value="support">Technical Support</option>
-                    <option value="feedback">Feedback</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="user_message" rows="5" required></textarea>
-            </div>
+      count.textContent = `${tasks.length} task${tasks.length!==1?'s':''}`;
+    }
 
-            <div class="form-group">
-                <input type="checkbox" id="subscribe" name="subscribe_newsletter">
-                <label for="subscribe">Subscribe to our newsletter</label>
-            </div>
-            
-            <button type="submit">Send Message</button>
-            <button type="reset">Clear Form</button>
-        </form>
-    </section>
+    function escapeHtml(str){ return str.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
 
-    <footer>
-        <p>&copy; 2025 Comprehensive HTML Example. All rights reserved.</p>
-        <p>Follow us on <a href="https://example.com/social" target="_blank">Social Media</a>.</p>
-    </footer>
+    function addTask(text){
+      const t = { id: Date.now().toString(), text: text.trim(), done:false, created: Date.now() };
+      tasks.unshift(t);
+      save(); render();
+    }
 
+    function removeTask(id){
+      if(!confirm('Delete this task?')) return;
+      tasks = tasks.filter(t => t.id !== id);
+      save(); render();
+    }
+
+    function toggleDone(id, done){
+      const t = tasks.find(x=>x.id===id); if(!t) return; t.done = done; save(); render();
+    }
+
+    function startEdit(id){
+      const t = tasks.find(x=>x.id===id); if(!t) return;
+      const newText = prompt('Edit task', t.text);
+      if(newText === null) return; // cancelled
+      const trimmed = newText.trim();
+      if(trimmed === ''){ alert('Task cannot be empty'); return; }
+      t.text = trimmed; save(); render();
+    }
+
+    // UI actions
+    addBtn.addEventListener('click', () => {
+      const val = taskInput.value;
+      if(!val.trim()) return taskInput.focus();
+      addTask(val); taskInput.value = '';
+    });
+
+    taskInput.addEventListener('keydown', e => { if(e.key === 'Enter'){ addBtn.click(); } });
+
+    clearBtn.addEventListener('click', () => {
+      if(!confirm('Clear all tasks?')) return;
+      tasks = []; save(); render();
+    });
+
+    filterBtns.forEach(b => b.addEventListener('click', () => {
+      filterBtns.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      currentFilter = b.dataset.filter;
+      render();
+    }));
+
+    // initialize
+    render();
+
+    // Accessibility: reduce motion
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.documentElement.style.scrollBehavior = 'auto';
+    }
+  </script>
 </body>
 </html>

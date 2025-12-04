@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Large Example HTML Program</title>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #343a40;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+        }
+        nav ul li a:hover {
+            background-color: #007bff;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Comprehensive Web Platform</h1>
+        <p>Utilizing Semantic HTML5 for a structured experience.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#data">Data Insights</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <main>
+            <section id="home">
+                <h2>🏠 Welcome to Our Site</h2>
+                <p>This is the main content area, enclosed by the **&lt;main&gt;** tag. We use **&lt;section&gt;** tags to divide the content into meaningful parts.</p>
+                
+                <article>
+                    <h3>Article Spotlight: The Power of HTML5</h3>
+                    <p>The **&lt;article&gt;** tag is used for independent, self-contained content, like a blog post or a news item. HTML5 introduced many tags to make web structure clearer for browsers and search engines.</p>
+                    
+                    <aside>
+                        <h4>Quick Note (Sidebar Info)</h4>
+                        <p>This information, enclosed in the **&lt;aside&gt;** tag, is related to the main content but stands apart, like a sidebar or a pull quote.</p>
+                    </aside>
+
+                    <p>A simple ordered list example:</p>
+                    <ol>
+                        <li>Define DOCTYPE.</li>
+                        <li>Include head and body.</li>
+                        <li>Add semantic structure.</li>
+                    </ol>
+                </article>
+            </section>
+
+            <section id="features">
+                <h2>✨ Key Features</h2>
+                <p>Our platform offers a wide range of functionalities designed for efficiency and ease of use.</p>
+                
+                <ul>
+                    <li>**Accessibility:** Built with screen readers in mind.</li>
+                    <li>**Responsiveness:** Scales across all device sizes.</li>
+                    <li>**Semantic Markup:** Clean and modern code structure.</li>
+                    <li>**Performance:** Optimized for fast loading speeds.</li>
+                </ul>
+            </section>
+            
+            <section id="data">
+                <h2>📊 Data Overview Table</h2>
+                <p>A demonstration of data structure using the **&lt;table&gt;** tag.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Q1 2025</th>
+                            <th>Q2 2025</th>
+                            <th>Trend</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Users Acquired</td>
+                            <td>12,500</td>
+                            <td>18,900</td>
+                            <td>Growth</td>
+                        </tr>
+                        <tr>
+                            <td>Page Views</td>
+                            <td>450,200</td>
+                            <td>510,800</td>
+                            <td>Stable</td>
+                        </tr>
+                        <tr>
+                            <td>Conversion Rate</td>
+                            <td>4.2%</td>
+                            <td>5.5%</td>
+                            <td>Strong Growth</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Total Metrics Evaluated</td>
+                            <td>3</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+            
+            <section id="contact">
+                <h2>📧 Contact Us</h2>
+                <p>Use the form below, built with the **&lt;form&gt;** tag, to send us a message.</p>
+                <form action="/submit-enquiry" method="POST">
+                    
+                    <label for="full-name">Full Name:</label><br>
+                    <input type="text" id="full-name" name="full_name" placeholder="John Doe" required><br><br>
+                    
+                    <label for="email">Email Address:</label><br>
+                    <input type="email" id="email" name="email_address" placeholder="example@domain.com" required><br><br>
+                    
+                    <label for="enquiry-type">Enquiry Type:</label><br>
+                    <select id="enquiry-type" name="enquiry_type">
+                        <option value="general">General Question</option>
+                        <option value="support">Technical Support</option>
+                        <option value="feedback">Feedback</option>
+                    </select><br><br>
+                    
+                    <label for="message">Your Message:</label><br>
+                    <textarea id="message" name="message" rows="5" cols="60" required></textarea><br><br>
+                    
+                    <input type="checkbox" id="terms" name="terms" value="agreed" required>
+                    <label for="terms">I agree to the terms and conditions.</label><br><br>
+                    
+                    <button type="submit">Submit Form</button>
+                    <button type="reset">Reset</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Comprehensive HTML Example. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
